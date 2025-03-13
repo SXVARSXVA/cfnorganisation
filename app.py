@@ -134,17 +134,17 @@ with app.app_context():
                 "date": datetime(2024, 12, 15),
                 "fights": [
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Nika Chartia", 
-                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Middleweight", "is_main_card": True},
+                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Middleweight"},
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Giorgi Bukhrashvili",
-                     "result": "Beroshvili Wins via TKO in Round 4", "weight_class": "Middleweight", "is_main_card": True},
+                     "result": "Beroshvili Wins via TKO in Round 4", "weight_class": "Middleweight"},
                     {"fighter1": "Levan Totochia", "fighter2": "Saba Zathiashvili",
-                     "result": "Totochia Wins via TKO in Round 1", "weight_class": "Middleweight", "is_main_card": True},
+                     "result": "Totochia Wins via TKO in Round 1", "weight_class": "Middleweight"},
                     {"fighter1": "Saba Kasradze", "fighter2": "Demetre Tabatadze",
-                     "result": "Kasradze Wins via TKO in Round 3", "weight_class": "Lightweight", "is_main_card": False},
+                     "result": "Kasradze Wins via TKO in Round 3", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Berulava", "fighter2": "Misho Keshelava",
-                     "result": "Berulava Wins via TKO in Round 2", "weight_class": "Lightweight", "is_main_card": False},
+                     "result": "Berulava Wins via TKO in Round 2", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Beroshvili", "fighter2": "Nika Metreveli",
-                     "result": "Cancelled", "weight_class": "Middleweight", "is_main_card": False}
+                     "result": "Cancelled", "weight_class": "Middleweight"}
                 ]
             },
             {
@@ -152,13 +152,13 @@ with app.app_context():
                 "date": datetime(2024, 9, 1),
                 "fights": [
                     {"fighter1": "Luka Javakhishvili", "fighter2": "Sandro Chalashvili",
-                     "result": "Javakhishvili Wins via TKO in Round 3", "weight_class": "Lightweight", "is_main_card": True},
+                     "result": "Javakhishvili Wins via TKO in Round 3", "weight_class": "Lightweight"},
                     {"fighter1": "Sandro Datiashvili", "fighter2": "Rezi Gagua",
-                     "result": "Datiashvili Wins via TKO in Round 3", "weight_class": "Middleweight", "is_main_card": True},
+                     "result": "Datiashvili Wins via TKO in Round 3", "weight_class": "Middleweight"},
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Gigi Kenkishvili",
-                     "result": "Beroshvili Wins via TKO in Round 3", "weight_class": "Middleweight", "is_main_card": False},
+                     "result": "Beroshvili Wins via TKO in Round 3", "weight_class": "Middleweight"},
                     {"fighter1": "Nika Berulava", "fighter2": "Misho Keshelava",
-                     "result": "Cancelled", "weight_class": "Lightweight", "is_main_card": False}
+                     "result": "Cancelled", "weight_class": "Lightweight"}
                 ]
             },
             {
@@ -166,11 +166,11 @@ with app.app_context():
                 "date": datetime(2024, 6, 1),
                 "fights": [
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Nikoloz Jirkmelishvili",
-                     "result": "Kvaskhvadze Wins via TKO in Round 4", "weight_class": "Middleweight", "is_main_card": True},
+                     "result": "Kvaskhvadze Wins via TKO in Round 4", "weight_class": "Middleweight"},
                     {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
-                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight", "is_main_card": False},
+                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Berulava", "fighter2": "Luka Javakhishvili",
-                     "result": "Berulava Wins via TKO in Round 3", "weight_class": "Lightweight", "is_main_card": False}
+                     "result": "Berulava Wins via TKO in Round 3", "weight_class": "Lightweight"}
                 ]
             },
             {
@@ -178,13 +178,13 @@ with app.app_context():
                 "date": datetime(2024, 3, 1),
                 "fights": [
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Giorgi Kiladze",
-                     "result": "Kvaskhvadze Wins via TKO in Round 3", "weight_class": "Middleweight", "is_main_card": True},
+                     "result": "Kvaskhvadze Wins via TKO in Round 3", "weight_class": "Middleweight"},
                     {"fighter1": "Nika Beroshvili", "fighter2": "Sandro Datiashvili",
-                     "result": "Beroshvili Wins via Unanimous Decision", "weight_class": "Middleweight", "is_main_card": True},
+                     "result": "Beroshvili Wins via Unanimous Decision", "weight_class": "Middleweight"},
                     {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
-                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight", "is_main_card": False},
+                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight"},
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Giorgi Chanadiri",
-                     "result": "Beroshvili Wins via TKO in Round 1", "weight_class": "Middleweight", "is_main_card": False}
+                     "result": "Beroshvili Wins via TKO in Round 1", "weight_class": "Middleweight"}
                 ]
             },
             {
@@ -192,13 +192,13 @@ with app.app_context():
                 "date": datetime(2023, 12, 1),
                 "fights": [
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Sandro Chalashvili",
-                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Lightweight", "is_main_card": True},
+                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Metreveli", "fighter2": "Rezi Gagua",
-                     "result": "No Contest", "weight_class": "Middleweight", "is_main_card": True},
+                     "result": "No Contest", "weight_class": "Middleweight"},
                     {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
-                     "result": "Cancelled", "weight_class": "Lightweight", "is_main_card": False},
+                     "result": "Cancelled", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Beroshvili", "fighter2": "Sandro Datiashvili",
-                     "result": "Draw", "weight_class": "Middleweight", "is_main_card": False}
+                     "result": "Draw", "weight_class": "Middleweight"}
                 ]
             }
         ]
@@ -218,7 +218,6 @@ with app.app_context():
                         fighter2=fighter_objects[fight_data["fighter2"]],
                         result=fight_data["result"],
                         weight_class=fight_data["weight_class"],
-                        is_main_card=fight_data.get("is_main_card", True),
                         event=event
                     )
                     db.session.add(fight)

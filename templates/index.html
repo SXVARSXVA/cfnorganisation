@@ -112,11 +112,9 @@
             <h4>Main Card:</h4>
             <ul class="main-card">
                 {% for fight in event.fights %}
-                {% if fight.is_main_card %}
+                {% if fight.is_title_fight %}
                 <li>
-                    {% if fight.is_title_fight %}
                     <span class="championship-text">{{ fight.weight_class }} Championship</span>:<br>
-                    {% endif %}
                     <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>
                     {% if fight.result %}({{ fight.result }}){% endif %}
                 </li>
@@ -127,7 +125,7 @@
             <h4>Preliminary Card:</h4>
             <ul class="prelim-card">
                 {% for fight in event.fights %}
-                {% if not fight.is_main_card %}
+                {% if not fight.is_title_fight %}
                 <li>
                     <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>
                     {% if fight.result %}({{ fight.result }}){% endif %}
@@ -148,13 +146,10 @@
             <h4>Main Card Results:</h4>
             <ul class="main-card">
                 {% for fight in event.fights %}
-                {% if fight.is_main_card %}
+                {% if fight.is_title_fight %}
                 <li>
-                    {% if fight.is_title_fight %}
                     <span class="championship-text">{{ fight.weight_class }} Championship</span>:<br>
-                    {% endif %}
-                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>
-                    {% if fight.result %}: {{ fight.result }}{% endif %}
+                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>: {{ fight.result }}
                 </li>
                 {% endif %}
                 {% endfor %}
@@ -163,10 +158,9 @@
             <h4>Preliminary Card Results:</h4>
             <ul class="prelim-card">
                 {% for fight in event.fights %}
-                {% if not fight.is_main_card %}
+                {% if not fight.is_title_fight %}
                 <li>
-                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>
-                    {% if fight.result %}: {{ fight.result }}{% endif %}
+                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>: {{ fight.result }}
                 </li>
                 {% endif %}
                 {% endfor %}
