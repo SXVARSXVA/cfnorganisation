@@ -15,6 +15,16 @@ class Fighter(db.Model):
     record_draws = db.Column(db.Integer, default=0)
     weight_class = db.Column(db.String(50))
     ranking = db.Column(db.Integer)
+    pound_for_pound_rank = db.Column(db.Integer, nullable=True)
+
+class Fight(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fighter1_id = db.Column(db.Integer, db.ForeignKey('fighter.id'), nullable=False)
+    fighter2_id = db.Column(db.Integer, db.ForeignKey('fighter.id'), nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
+    result = db.Column(db.String(100))  # e.g., "Fighter1 via TKO (Round 2)"
+    is_title_fight = db.Column(db.Boolean, default=False)
+    weight_class = db.Column(db.String(50))
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -22,3 +32,4 @@ class Event(db.Model):
     date = db.Column(db.DateTime, nullable=False)
     is_upcoming = db.Column(db.Boolean, default=True)
     description = db.Column(db.Text)
+    fights = db.relationship('Fight', backref='event', lazy=True)
