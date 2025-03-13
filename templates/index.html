@@ -82,10 +82,14 @@
         <h4>Fight History</h4>
         <ul>
             {% for fight in fighter.fights_as_fighter1 %}
-            <li>{{ fight.event.name }}: {{ fight.result }}</li>
+                {% if not fight.event.is_upcoming %}
+                    <li>{{ fight.event.name }}: vs {{ fight.fighter2.name }} - {{ fight.result }}</li>
+                {% endif %}
             {% endfor %}
             {% for fight in fighter.fights_as_fighter2 %}
-            <li>{{ fight.event.name }}: {{ fight.result }}</li>
+                {% if not fight.event.is_upcoming %}
+                    <li>{{ fight.event.name }}: vs {{ fight.fighter1.name }} - {{ fight.result }}</li>
+                {% endif %}
             {% endfor %}
         </ul>
     </section>
