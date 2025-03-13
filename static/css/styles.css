@@ -132,6 +132,14 @@ section {
     text-shadow: 0 0 10px gold;
 }
 
+/* Champion position styles */
+.champion-position {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.5);
+}
 
 /* Update rankings styles */
 .rankings-container ol {
