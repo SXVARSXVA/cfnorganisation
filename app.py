@@ -51,12 +51,16 @@ def index():
     past_events = Event.query.filter_by(is_upcoming=False)\
         .order_by(Event.date.desc()).all()
 
+    # Create a set of all fighters for profiles
+    all_fighters = list(set(pound_for_pound + middleweight_rankings + lightweight_rankings))
+
     return render_template('index.html',
                          pound_for_pound=pound_for_pound,
                          middleweight_rankings=middleweight_rankings,
                          lightweight_rankings=lightweight_rankings,
                          upcoming_events=upcoming_events,
-                         past_events=past_events)
+                         past_events=past_events,
+                         all_fighters=all_fighters)
 
 # Create directories for static files if they don't exist
 os.makedirs('static/images', exist_ok=True)
@@ -90,7 +94,8 @@ with app.app_context():
             "Saba Kasradze": {"wins": 1, "losses": 0, "draws": 0, "weight_class": "Lightweight", "ranking": 2},
             "Luka Javakhishvili": {"wins": 1, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 3},
             "Sandro Chalashvili": {"wins": 0, "losses": 2, "draws": 0, "weight_class": "Lightweight", "ranking": 4},
-            "Misho Keshelava": {"wins": 0, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 5}
+            "Misho Keshelava": {"wins": 0, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 5},
+            "Viktor Tskhvaradze": {"wins": 1, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 6} # Added Viktor
         }
 
         fighter_objects = {}
@@ -201,6 +206,33 @@ with app.app_context():
                         event=event
                     )
                     db.session.add(fight)
+
+        # Add CFN 6 fights
+        event = Event.query.filter_by(name="CFN 6: Kvaskhvadze vs. Beroshvili").first()
+        if event:
+            luka = Fighter.query.filter_by(name="Luka Kvaskhvadze").first()
+            sandro = Fighter.query.filter_by(name="Sandro Beroshvili").first()
+            if luka and sandro:
+                fight = Fight(
+                    fighter1=luka,
+                    fighter2=sandro,
+                    event=event,
+                    is_title_fight=True,
+                    weight_class="Middleweight"
+                )
+                db.session.add(fight)
+
+            nika = Fighter.query.filter_by(name="Nika Berulava").first()
+            viktor = Fighter.query.filter_by(name="Viktor Tskhvaradze").first()
+            if nika and viktor:
+                fight = Fight(
+                    fighter1=nika,
+                    fighter2=viktor,
+                    event=event,
+                    is_title_fight=True,
+                    weight_class="Lightweight"
+                )
+                db.session.add(fight)
 
         db.session.commit()
 

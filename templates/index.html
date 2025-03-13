@@ -44,7 +44,9 @@
         <ol>
             {% for fighter in pound_for_pound %}
             <li>
-                {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                <a onclick="showSection('{{ fighter.name.lower().replace(' ', '-') }}-profile')">
+                    {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                </a>
             </li>
             {% endfor %}
         </ol>
@@ -53,7 +55,9 @@
         <ol>
             {% for fighter in middleweight_rankings %}
             <li>
-                {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                <a onclick="showSection('{{ fighter.name.lower().replace(' ', '-') }}-profile')">
+                    {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                </a>
             </li>
             {% endfor %}
         </ol>
@@ -62,11 +66,30 @@
         <ol>
             {% for fighter in lightweight_rankings %}
             <li>
-                {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                <a onclick="showSection('{{ fighter.name.lower().replace(' ', '-') }}-profile')">
+                    {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                </a>
             </li>
             {% endfor %}
         </ol>
     </section>
+
+    {% for fighter in pound_for_pound + middleweight_rankings + lightweight_rankings %}
+    <section class="container {{ fighter.name.lower().replace(' ', '-') }}-profile">
+        <h2>{{ fighter.name }}</h2>
+        <p>Record: {{ fighter.record_wins }} Wins - {{ fighter.record_losses }} Losses - {{ fighter.record_draws }} Draws
+        {% if fighter.record_no_contests > 0 %} - {{ fighter.record_no_contests }} No Contest{% endif %}</p>
+        <h4>Fight History</h4>
+        <ul>
+            {% for fight in fighter.fights_as_fighter1 %}
+            <li>{{ fight.event.name }}: {{ fight.result }}</li>
+            {% endfor %}
+            {% for fight in fighter.fights_as_fighter2 %}
+            <li>{{ fight.event.name }}: {{ fight.result }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
 
     <section class="container events-container">
         <h2>Upcoming Events</h2>
@@ -79,7 +102,13 @@
             <h4>Fight Card:</h4>
             <ul>
                 {% for fight in event.fights %}
-                <li>{{ fight.result }}</li>
+                <li>
+                    {% if fight.is_title_fight %}
+                    <span class="championship-text">{{ fight.weight_class }} Championship</span>:<br>
+                    {% endif %}
+                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>
+                    {% if fight.result %}({{ fight.result }}){% endif %}
+                </li>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -95,7 +124,12 @@
             <h4>Results:</h4>
             <ul>
                 {% for fight in event.fights %}
-                <li>{{ fight.result }}</li>
+                <li>
+                    {% if fight.is_title_fight %}
+                    <span class="championship-text">{{ fight.weight_class }} Championship</span>:<br>
+                    {% endif %}
+                    {{ fight.result }}
+                </li>
                 {% endfor %}
             </ul>
             {% endif %}
