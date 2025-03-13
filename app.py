@@ -72,13 +72,11 @@ def send_static(path):
 
 with app.app_context():
     # Import models here to ensure they're registered with SQLAlchemy
-    import models
-    db.create_all()
+    from models import Fighter, Event, Fight
 
     # Add initial data if the database is empty
-    from models import Fighter, Event, Fight
     if not Fighter.query.first():
-        # Add fighters
+        # Add fighters with complete records
         fighters = {
             "Luka Kvaskhvadze": {"wins": 4, "losses": 0, "draws": 0, "weight_class": "Middleweight", "ranking": 1, "p4p": 1},
             "Sandro Beroshvili": {"wins": 3, "losses": 0, "draws": 0, "weight_class": "Middleweight", "ranking": 2, "p4p": 2},
@@ -96,7 +94,13 @@ with app.app_context():
             "Sandro Chalashvili": {"wins": 0, "losses": 2, "draws": 0, "weight_class": "Lightweight", "ranking": 4},
             "Misho Keshelava": {"wins": 0, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 5},
             "Viktor Tskhvaradze": {"wins": 0, "losses": 0, "draws": 0, "weight_class": "Lightweight", "ranking": 6},
-            "Nika Antadze": {"wins": 0, "losses": 0, "draws": 0, "weight_class": "Middleweight", "ranking": 11}
+            "Nika Antadze": {"wins": 0, "losses": 0, "draws": 0, "weight_class": "Middleweight", "ranking": 11},
+            "Demetre Tabatadze": {"wins":2, "losses":0, "draws":0, "weight_class": "Lightweight", "ranking": 7},
+            "Lado Jariashvili": {"wins":0, "losses":2, "draws":0, "weight_class": "Lightweight", "ranking": 8},
+            "Nika Chartia": {"wins":0, "losses":1, "draws":0, "weight_class": "Middleweight", "ranking": 12},
+            "Giorgi Chanadiri": {"wins":0, "losses":1, "draws":0, "weight_class": "Middleweight", "ranking": 13},
+            "Nikoloz Jirkmelishvili": {"wins":0, "losses":1, "draws":0, "weight_class": "Middleweight", "ranking": 14},
+            "Nika Metreveli": {"wins":0, "losses":0, "draws":0, "weight_class": "Middleweight", "ranking": 15}
         }
 
         fighter_objects = {}
@@ -123,7 +127,7 @@ with app.app_context():
         )
         db.session.add(cfn6)
 
-        # Add past events
+        # Add past events with complete fight history
         past_events = [
             {
                 "name": "CFN 5",
@@ -132,13 +136,15 @@ with app.app_context():
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Nika Chartia", 
                      "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Middleweight"},
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Giorgi Bukhrashvili",
-                     "result": "Beroshvili Wins via TKO in Round 3", "weight_class": "Middleweight"},
+                     "result": "Beroshvili Wins via TKO in Round 4", "weight_class": "Middleweight"},
                     {"fighter1": "Levan Totochia", "fighter2": "Saba Zathiashvili",
                      "result": "Totochia Wins via TKO in Round 1", "weight_class": "Middleweight"},
                     {"fighter1": "Saba Kasradze", "fighter2": "Demetre Tabatadze",
                      "result": "Kasradze Wins via TKO in Round 3", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Berulava", "fighter2": "Misho Keshelava",
-                     "result": "Berulava Wins via TKO in Round 2", "weight_class": "Lightweight"}
+                     "result": "Berulava Wins via TKO in Round 2", "weight_class": "Lightweight"},
+                    {"fighter1": "Nika Beroshvili", "fighter2": "Nika Metreveli",
+                     "result": "Cancelled", "weight_class": "Middleweight"}
                 ]
             },
             {
@@ -150,7 +156,9 @@ with app.app_context():
                     {"fighter1": "Sandro Datiashvili", "fighter2": "Rezi Gagua",
                      "result": "Datiashvili Wins via TKO in Round 3", "weight_class": "Middleweight"},
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Gigi Kenkishvili",
-                     "result": "Beroshvili Wins via TKO in Round 3", "weight_class": "Middleweight"}
+                     "result": "Beroshvili Wins via TKO in Round 3", "weight_class": "Middleweight"},
+                    {"fighter1": "Nika Berulava", "fighter2": "Misho Keshelava",
+                     "result": "Cancelled", "weight_class": "Lightweight"}
                 ]
             },
             {
@@ -159,6 +167,8 @@ with app.app_context():
                 "fights": [
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Nikoloz Jirkmelishvili",
                      "result": "Kvaskhvadze Wins via TKO in Round 4", "weight_class": "Middleweight"},
+                    {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
+                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Berulava", "fighter2": "Luka Javakhishvili",
                      "result": "Berulava Wins via TKO in Round 3", "weight_class": "Lightweight"}
                 ]
@@ -171,6 +181,8 @@ with app.app_context():
                      "result": "Kvaskhvadze Wins via TKO in Round 3", "weight_class": "Middleweight"},
                     {"fighter1": "Nika Beroshvili", "fighter2": "Sandro Datiashvili",
                      "result": "Beroshvili Wins via Unanimous Decision", "weight_class": "Middleweight"},
+                    {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
+                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight"},
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Giorgi Chanadiri",
                      "result": "Beroshvili Wins via TKO in Round 1", "weight_class": "Middleweight"}
                 ]
@@ -183,6 +195,8 @@ with app.app_context():
                      "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Metreveli", "fighter2": "Rezi Gagua",
                      "result": "No Contest", "weight_class": "Middleweight"},
+                    {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
+                     "result": "Cancelled", "weight_class": "Lightweight"},
                     {"fighter1": "Nika Beroshvili", "fighter2": "Sandro Datiashvili",
                      "result": "Draw", "weight_class": "Middleweight"}
                 ]
@@ -211,6 +225,7 @@ with app.app_context():
         # Add CFN 6 fights
         event = Event.query.filter_by(name="CFN 6: Kvaskhvadze vs. Beroshvili").first()
         if event:
+            # Main Event - Middleweight Championship
             luka = Fighter.query.filter_by(name="Luka Kvaskhvadze").first()
             sandro = Fighter.query.filter_by(name="Sandro Beroshvili").first()
             if luka and sandro:
@@ -223,6 +238,7 @@ with app.app_context():
                 )
                 db.session.add(fight)
 
+            # Co-Main Event - Lightweight Championship
             nika = Fighter.query.filter_by(name="Nika Berulava").first()
             viktor = Fighter.query.filter_by(name="Viktor Tskhvaradze").first()
             if nika and viktor:
@@ -235,7 +251,7 @@ with app.app_context():
                 )
                 db.session.add(fight)
 
-            # Add preliminary card fights
+            # Preliminary Card
             nika_b = Fighter.query.filter_by(name="Nika Beroshvili").first()
             gigi = Fighter.query.filter_by(name="Gigi Kenkishvili").first()
             if nika_b and gigi:
