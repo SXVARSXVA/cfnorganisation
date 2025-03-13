@@ -133,12 +133,25 @@ section {
 }
 
 /* Champion position styles */
+.champion-box {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 5px 0 15px 0;
+    border-radius: 8px;
+    border: 2px solid gold;
+    box-shadow: 0 0 10px gold;
+    animation: golden-glow 2s infinite alternate;
+}
+
 .champion-position {
     font-size: 1.2em;
     font-weight: bold;
-    margin-bottom: 10px;
-    padding: 5px;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.5);
+    text-align: center;
+}
+
+@keyframes golden-glow {
+    from { box-shadow: 0 0 5px gold; }
+    to { box-shadow: 0 0 15px gold, 0 0 5px yellow; }
 }
 
 /* Update rankings styles */
