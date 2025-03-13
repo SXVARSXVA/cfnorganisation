@@ -146,6 +146,40 @@ with app.app_context():
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Gigi Kenkishvili",
                      "result": "Beroshvili Wins via TKO in Round 3", "weight_class": "Middleweight"}
                 ]
+            },
+            {
+                "name": "CFN 3",
+                "date": datetime(2024, 6, 1),
+                "fights": [
+                    {"fighter1": "Luka Kvaskhvadze", "fighter2": "Nikoloz Jirkmelishvili",
+                     "result": "Kvaskhvadze Wins via TKO in Round 4", "weight_class": "Middleweight"},
+                    {"fighter1": "Nika Berulava", "fighter2": "Luka Javakhishvili",
+                     "result": "Berulava Wins via TKO in Round 3", "weight_class": "Lightweight"}
+                ]
+            },
+            {
+                "name": "CFN 2",
+                "date": datetime(2024, 3, 1),
+                "fights": [
+                    {"fighter1": "Luka Kvaskhvadze", "fighter2": "Giorgi Kiladze",
+                     "result": "Kvaskhvadze Wins via TKO in Round 3", "weight_class": "Middleweight"},
+                    {"fighter1": "Nika Beroshvili", "fighter2": "Sandro Datiashvili",
+                     "result": "Beroshvili Wins via Unanimous Decision", "weight_class": "Middleweight"},
+                    {"fighter1": "Sandro Beroshvili", "fighter2": "Giorgi Chanadiri",
+                     "result": "Beroshvili Wins via TKO in Round 1", "weight_class": "Middleweight"}
+                ]
+            },
+            {
+                "name": "CFN 1",
+                "date": datetime(2023, 12, 1),
+                "fights": [
+                    {"fighter1": "Luka Kvaskhvadze", "fighter2": "Sandro Chalashvili",
+                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Lightweight"},
+                    {"fighter1": "Nika Metreveli", "fighter2": "Rezi Gagua",
+                     "result": "No Contest", "weight_class": "Middleweight"},
+                    {"fighter1": "Nika Beroshvili", "fighter2": "Sandro Datiashvili",
+                     "result": "Draw", "weight_class": "Middleweight"}
+                ]
             }
         ]
 
