@@ -119,15 +119,32 @@ section {
     padding: 20px;
     border-radius: 8px;
     margin: 10px 0;
-    display: none;
-    transition: all var(--transition-speed) ease-in-out;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    display: block; /* Change from none to block */
+    opacity: 1; /* Ensure visibility */
+    transition: all 0.3s ease-in-out;
 }
 
 /* Championship text styles */
 .championship-text {
-    color: var(--accent-color);
+    color: gold;
     font-weight: bold;
-    text-shadow: 0 0 10px var(--accent-color);
+    text-shadow: 0 0 10px gold;
+}
+
+
+/* Update rankings styles */
+.rankings-container ol {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.rankings-container li {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 5px 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
 }
 
 /* Footer styles */
@@ -158,12 +175,12 @@ footer {
     body {
         font-size: 16px;
     }
-    
+
     nav ul {
         flex-direction: column;
         align-items: center;
     }
-    
+
     section {
         padding: 15px;
     }
