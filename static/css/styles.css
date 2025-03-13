@@ -154,6 +154,23 @@ section {
     to { box-shadow: 0 0 15px gold, 0 0 5px yellow; }
 }
 
+/* Event card styling */
+.main-card li {
+    border-left: 3px solid gold;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.prelim-card li {
+    border-left: 3px solid #777;
+    padding-left: 10px;
+    margin-bottom: 8px;
+}
+
+.main-card, .prelim-card {
+    margin-bottom: 20px;
+}
+
 /* Update rankings styles */
 .rankings-container ol {
     list-style-position: inside;
