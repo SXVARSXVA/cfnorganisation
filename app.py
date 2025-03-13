@@ -133,72 +133,87 @@ with app.app_context():
                 "name": "CFN 5",
                 "date": datetime(2024, 12, 15),
                 "fights": [
+                    # Main Card
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Nika Chartia", 
-                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Middleweight"},
+                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Middleweight", "is_main_card": True},
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Giorgi Bukhrashvili",
-                     "result": "Beroshvili Wins via TKO in Round 4", "weight_class": "Middleweight"},
+                     "result": "Beroshvili Wins via TKO in Round 4", "weight_class": "Middleweight", "is_main_card": True},
                     {"fighter1": "Levan Totochia", "fighter2": "Saba Zathiashvili",
-                     "result": "Totochia Wins via TKO in Round 1", "weight_class": "Middleweight"},
+                     "result": "Totochia Wins via TKO in Round 1", "weight_class": "Middleweight", "is_main_card": True},
+                     
+                    # Preliminary Card
                     {"fighter1": "Saba Kasradze", "fighter2": "Demetre Tabatadze",
-                     "result": "Kasradze Wins via TKO in Round 3", "weight_class": "Lightweight"},
+                     "result": "Kasradze Wins via TKO in Round 3", "weight_class": "Lightweight", "is_main_card": False},
                     {"fighter1": "Nika Berulava", "fighter2": "Misho Keshelava",
-                     "result": "Berulava Wins via TKO in Round 2", "weight_class": "Lightweight"},
+                     "result": "Berulava Wins via TKO in Round 2", "weight_class": "Lightweight", "is_main_card": False},
                     {"fighter1": "Nika Beroshvili", "fighter2": "Nika Metreveli",
-                     "result": "Cancelled", "weight_class": "Middleweight"}
+                     "result": "Cancelled", "weight_class": "Middleweight", "is_main_card": False}
                 ]
             },
             {
                 "name": "CFN 4",
                 "date": datetime(2024, 9, 1),
                 "fights": [
+                    # Main Card
                     {"fighter1": "Luka Javakhishvili", "fighter2": "Sandro Chalashvili",
-                     "result": "Javakhishvili Wins via TKO in Round 3", "weight_class": "Lightweight"},
+                     "result": "Javakhishvili Wins via TKO in Round 3", "weight_class": "Lightweight", "is_main_card": True},
                     {"fighter1": "Sandro Datiashvili", "fighter2": "Rezi Gagua",
-                     "result": "Datiashvili Wins via TKO in Round 3", "weight_class": "Middleweight"},
+                     "result": "Datiashvili Wins via TKO in Round 3", "weight_class": "Middleweight", "is_main_card": True},
+                     
+                    # Preliminary Card
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Gigi Kenkishvili",
-                     "result": "Beroshvili Wins via TKO in Round 3", "weight_class": "Middleweight"},
+                     "result": "Beroshvili Wins via TKO in Round 3", "weight_class": "Middleweight", "is_main_card": False},
                     {"fighter1": "Nika Berulava", "fighter2": "Misho Keshelava",
-                     "result": "Cancelled", "weight_class": "Lightweight"}
+                     "result": "Cancelled", "weight_class": "Lightweight", "is_main_card": False}
                 ]
             },
             {
                 "name": "CFN 3",
                 "date": datetime(2024, 6, 1),
                 "fights": [
+                    # Main Card
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Nikoloz Jirkmelishvili",
-                     "result": "Kvaskhvadze Wins via TKO in Round 4", "weight_class": "Middleweight"},
+                     "result": "Kvaskhvadze Wins via TKO in Round 4", "weight_class": "Middleweight", "is_main_card": True},
+                     
+                    # Preliminary Card
                     {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
-                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight"},
+                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight", "is_main_card": False},
                     {"fighter1": "Nika Berulava", "fighter2": "Luka Javakhishvili",
-                     "result": "Berulava Wins via TKO in Round 3", "weight_class": "Lightweight"}
+                     "result": "Berulava Wins via TKO in Round 3", "weight_class": "Lightweight", "is_main_card": False}
                 ]
             },
             {
                 "name": "CFN 2",
                 "date": datetime(2024, 3, 1),
                 "fights": [
+                    # Main Card
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Giorgi Kiladze",
-                     "result": "Kvaskhvadze Wins via TKO in Round 3", "weight_class": "Middleweight"},
+                     "result": "Kvaskhvadze Wins via TKO in Round 3", "weight_class": "Middleweight", "is_main_card": True},
                     {"fighter1": "Nika Beroshvili", "fighter2": "Sandro Datiashvili",
-                     "result": "Beroshvili Wins via Unanimous Decision", "weight_class": "Middleweight"},
+                     "result": "Beroshvili Wins via Unanimous Decision", "weight_class": "Middleweight", "is_main_card": True},
+                     
+                    # Preliminary Card
                     {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
-                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight"},
+                     "result": "Tabatadze Wins via doctor stoppage in Round 2", "weight_class": "Lightweight", "is_main_card": False},
                     {"fighter1": "Sandro Beroshvili", "fighter2": "Giorgi Chanadiri",
-                     "result": "Beroshvili Wins via TKO in Round 1", "weight_class": "Middleweight"}
+                     "result": "Beroshvili Wins via TKO in Round 1", "weight_class": "Middleweight", "is_main_card": False}
                 ]
             },
             {
                 "name": "CFN 1",
                 "date": datetime(2023, 12, 1),
                 "fights": [
+                    # Main Card
                     {"fighter1": "Luka Kvaskhvadze", "fighter2": "Sandro Chalashvili",
-                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Lightweight"},
+                     "result": "Kvaskhvadze Wins via TKO in Round 1", "weight_class": "Lightweight", "is_main_card": True},
                     {"fighter1": "Nika Metreveli", "fighter2": "Rezi Gagua",
-                     "result": "No Contest", "weight_class": "Middleweight"},
+                     "result": "No Contest", "weight_class": "Middleweight", "is_main_card": True},
+                     
+                    # Preliminary Card
                     {"fighter1": "Demetre Tabatadze", "fighter2": "Lado Jariashvili",
-                     "result": "Cancelled", "weight_class": "Lightweight"},
+                     "result": "Cancelled", "weight_class": "Lightweight", "is_main_card": False},
                     {"fighter1": "Nika Beroshvili", "fighter2": "Sandro Datiashvili",
-                     "result": "Draw", "weight_class": "Middleweight"}
+                     "result": "Draw", "weight_class": "Middleweight", "is_main_card": False}
                 ]
             }
         ]
@@ -218,6 +233,7 @@ with app.app_context():
                         fighter2=fighter_objects[fight_data["fighter2"]],
                         result=fight_data["result"],
                         weight_class=fight_data["weight_class"],
+                        is_main_card=fight_data.get("is_main_card", True),  # Default to main card if not specified
                         event=event
                     )
                     db.session.add(fight)

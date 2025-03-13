@@ -33,6 +33,7 @@ class Fight(db.Model):
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
     result = db.Column(db.String(200))  # e.g., "Fighter1 via TKO (Round 2)"
     is_title_fight = db.Column(db.Boolean, default=False)
+    is_main_card = db.Column(db.Boolean, default=True)  # True for main card, False for preliminary
     weight_class = db.Column(db.String(50))
     round = db.Column(db.Integer)
     method = db.Column(db.String(50))  # TKO, Decision, etc.
