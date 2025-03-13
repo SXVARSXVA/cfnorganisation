@@ -95,7 +95,8 @@ with app.app_context():
             "Luka Javakhishvili": {"wins": 1, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 3},
             "Sandro Chalashvili": {"wins": 0, "losses": 2, "draws": 0, "weight_class": "Lightweight", "ranking": 4},
             "Misho Keshelava": {"wins": 0, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 5},
-            "Viktor Tskhvaradze": {"wins": 1, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 6} # Added Viktor
+            "Viktor Tskhvaradze": {"wins": 0, "losses": 0, "draws": 0, "weight_class": "Lightweight", "ranking": 6},
+            "Nika Antadze": {"wins": 0, "losses": 0, "draws": 0, "weight_class": "Middleweight", "ranking": 11}
         }
 
         fighter_objects = {}
@@ -231,6 +232,29 @@ with app.app_context():
                     event=event,
                     is_title_fight=True,
                     weight_class="Lightweight"
+                )
+                db.session.add(fight)
+
+            # Add preliminary card fights
+            nika_b = Fighter.query.filter_by(name="Nika Beroshvili").first()
+            gigi = Fighter.query.filter_by(name="Gigi Kenkishvili").first()
+            if nika_b and gigi:
+                fight = Fight(
+                    fighter1=nika_b,
+                    fighter2=gigi,
+                    event=event,
+                    weight_class="Middleweight"
+                )
+                db.session.add(fight)
+
+            sandro_d = Fighter.query.filter_by(name="Sandro Datiashvili").first()
+            nika_a = Fighter.query.filter_by(name="Nika Antadze").first()
+            if sandro_d and nika_a:
+                fight = Fight(
+                    fighter1=sandro_d,
+                    fighter2=nika_a,
+                    event=event,
+                    weight_class="Middleweight"
                 )
                 db.session.add(fight)
 
