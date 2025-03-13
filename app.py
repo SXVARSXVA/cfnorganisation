@@ -95,7 +95,7 @@ with app.app_context():
             "Misho Keshelava": {"wins": 0, "losses": 1, "draws": 0, "weight_class": "Lightweight", "ranking": 5},
             "Viktor Tskhvaradze": {"wins": 0, "losses": 0, "draws": 0, "weight_class": "Lightweight", "ranking": 6},
             "Nika Antadze": {"wins": 0, "losses": 0, "draws": 0, "weight_class": "Middleweight", "ranking": 11},
-            "Demetre Tabatadze": {"wins":1, "losses":1, "draws":0, "weight_class": "Lightweight", "ranking": 7},
+            "Demetre Tabatadze": {"wins":2, "losses":1, "draws":0, "weight_class": "Lightweight", "ranking": 7},
             "Lado Jariashvili": {"wins":0, "losses":2, "draws":0, "weight_class": "Lightweight", "ranking": 8},
             "Nika Chartia": {"wins":0, "losses":1, "draws":0, "weight_class": "Middleweight", "ranking": 12},
             "Giorgi Chanadiri": {"wins":0, "losses":1, "draws":0, "weight_class": "Middleweight", "ranking": 13},
