@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Corporate Fight Night (CFN)</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/CFNB.png') }}" alt="CFN Logo" class="logo">
+        <nav>
+            <ul>
+                <li><a onclick="showSection('news-container')">News</a></li>
+                <li><a onclick="showSection('events-container')">Events</a></li>
+                <li><a onclick="showSection('rankings-container')">Rankings</a></li>
+                <li><a onclick="showSection('about-container')">About CFN</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="container about-container">
+        <h2>About CFN</h2>
+        <p>Corporate Fight Night (CFN) is a private and friendly boxing organization. We are not an official professional league but rather a passionate community of fighters who compete under our own rules. CFN is built around sportsmanship, competition, and the thrill of the fight, giving athletes a stage to showcase their skills without the constraints of mainstream promotions.</p>
+    </section>
+
+    <section class="container news-container">
+        <h2>Latest News</h2>
+        <div class="news-item">
+            <img src="{{ url_for('static', filename='images/6_2_.png') }}" alt="CFN 6 Poster" loading="lazy">
+            <p>CFN is back with CFN 6 event, featuring two <span class="championship-text">Championship</span> fights!</p>
+        </div>
+        <div class="news-item">
+            <p>We got debutant fighters on CFN: Nika Antadze in Middleweight and Viktor Tskhvaradze in Lightweight, who is already fighting for the <span class="championship-text">Championship</span> belt!</p>
+        </div>
+    </section>
+
+    <section class="container rankings-container">
+        <h2>Fighter Rankings</h2>
+
+        <h3>Pound-for-Pound Rankings</h3>
+        <ol>
+            {% for fighter in pound_for_pound %}
+            <li>
+                <a onclick="showSection('{{ fighter.name.lower().replace(' ', '-') }}-profile')">
+                    {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                </a>
+            </li>
+            {% endfor %}
+        </ol>
+
+        <h3>Middleweight (190 lb)</h3>
+        <div class="champion-box">
+            <div class="champion-position">Champion: <span class="championship-text">Vacant</span></div>
+        </div>
+        <ol>
+            {% for fighter in middleweight_rankings %}
+            <li>
+                <a onclick="showSection('{{ fighter.name.lower().replace(' ', '-') }}-profile')">
+                    {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                </a>
+            </li>
+            {% endfor %}
+        </ol>
+
+        <h3>Lightweight (170 lb)</h3>
+        <div class="champion-box">
+            <div class="champion-position">Champion: <span class="championship-text">Vacant</span></div>
+        </div>
+        <ol>
+            {% for fighter in lightweight_rankings %}
+            <li>
+                <a onclick="showSection('{{ fighter.name.lower().replace(' ', '-') }}-profile')">
+                    {{ fighter.name }} ({{ fighter.record_wins }}-{{ fighter.record_losses }}-{{ fighter.record_draws }})
+                </a>
+            </li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    {% for fighter in pound_for_pound + middleweight_rankings + lightweight_rankings %}
+    <section class="container {{ fighter.name.lower().replace(' ', '-') }}-profile">
+        <h2>{{ fighter.name }}</h2>
+        <p>Record: {{ fighter.record_wins }} Wins - {{ fighter.record_losses }} Losses - {{ fighter.record_draws }} Draws
+        {% if fighter.record_no_contests > 0 %} - {{ fighter.record_no_contests }} No Contest{% endif %}</p>
+        <h4>Fight History</h4>
+        <ul>
+            {% for fight in fighter.fights_as_fighter1 %}
+                {% if not fight.event.is_upcoming %}
+                    <li>{{ fight.event.name }}: vs {{ fight.fighter2.name }} - {{ fight.result }}</li>
+                {% endif %}
+            {% endfor %}
+            {% for fight in fighter.fights_as_fighter2 %}
+                {% if not fight.event.is_upcoming %}
+                    <li>{{ fight.event.name }}: vs {{ fight.fighter1.name }} - {{ fight.result }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </section>
+    {% endfor %}
+
+    <section class="container events-container">
+        <h2>Upcoming Events</h2>
+        {% for event in upcoming_events %}
+        <div class="event-card">
+            <h3>{{ event.name }}</h3>
+            <p>Date: {{ event.date.strftime('%B %d, %Y') }}</p>
+            <p>{{ event.description }}</p>
+            {% if event.fights %}
+            <h4>Main Card:</h4>
+            <ul class="main-card">
+                {% for fight in event.fights %}
+                {% if fight.is_title_fight %}
+                <li>
+                    <span class="championship-text">{{ fight.weight_class }} Championship</span>:<br>
+                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>
+                    {% if fight.result %}({{ fight.result }}){% endif %}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            
+            <h4>Preliminary Card:</h4>
+            <ul class="prelim-card">
+                {% for fight in event.fights %}
+                {% if not fight.is_title_fight %}
+                <li>
+                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>
+                    {% if fight.result %}({{ fight.result }}){% endif %}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <h2>Past Events</h2>
+        {% for event in past_events %}
+        <div class="event-card">
+            <h3>{{ event.name }}</h3>
+            <p>Date: {{ event.date.strftime('%B %d, %Y') }}</p>
+            {% if event.fights %}
+            <h4>Main Card Results:</h4>
+            <ul class="main-card">
+                {% for fight in event.fights %}
+                {% if fight.is_title_fight %}
+                <li>
+                    <span class="championship-text">{{ fight.weight_class }} Championship</span>:<br>
+                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>: {{ fight.result }}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            
+            <h4>Preliminary Card Results:</h4>
+            <ul class="prelim-card">
+                {% for fight in event.fights %}
+                {% if not fight.is_title_fight %}
+                <li>
+                    <strong>{{ fight.fighter1.name }} vs. {{ fight.fighter2.name }}</strong>: {{ fight.result }}
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Corporate Fight Night (CFN)</p>
+        <div class="sponsor">
+            <img src="{{ url_for('static', filename='images/thermostream.png') }}" alt="Thermostream Sponsor" loading="lazy">
+        </div>
+    </footer>
+</body>
+</html>
